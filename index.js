@@ -45,10 +45,12 @@ app.get("/list", (req, res) => {
 
 app.put('/update', (req, res) => {
   const id = req.body.id;
+  const nome = req.body.nome;
+  const idade = req.body.idade;
   const email = req.body.email;
   db.query(
-    "UPDATE cliente SET email = ? WHERE id = ?", 
-    [email, id],
+    "UPDATE cliente SET email = ?, nome = ?, idade = ? WHERE id = ?", 
+    [email, nome, idade, id],
     (err, result) => {
       err ? console.log(err) : res.send(result);
     })
